@@ -57,8 +57,6 @@ Javascript是单进程单线程的语言。node是对Chrome浏览器引擎V8的�
 ###准备工作
 以下文章的分析中笔者尽可能的少粘贴代码，多画流程图和大家一起探讨PM2源码。为了让大家能快速理解PM2的工作原理，笔者已经将PM2的源码添加了注释，只需要克隆下笔者代码，然后跟着笔者的流程图便可快速了解PM2的工作原理。
 
-笔者git仓库：http://git.sankuai.com/users/chenjianhui/repos/pm2-source-read/browse。
-
 通过这份代码你可以清晰的看到PM2的执行流程：
 
 ![](http://s0.meituan.net/bs/tempfs/file/chenjianhui/image.png)
