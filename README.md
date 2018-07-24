@@ -22,7 +22,7 @@ Javascript是单进程单线程的语言。node是对Chrome浏览器引擎V8的�
 4. Node如何利用多进程?
 >Nodejs是单线程运行的，这也是它经常被吐槽的一个点。针对这个点，Node推出了Cluster这个模块，用于创建多进程的Node应用。nodejs的特点：善于I/O，不善于计算。因为Node.js最擅长的就是任务调度，如果你的业务有很多的CPU计算，实际上也相当于这个计算阻塞了这个单线程，就不适合Node开发。利用多核，解决多CPU资源浪费的问题。每一个核CPU就是个独立node进程，每个node进程独立提供单次服务。cluster能实现多进程，添加上监听可以实现错误重启。
 
-##PM2常用命令
+## PM2常用命令
 和大多数介绍工具的文章一样，先安利一波工具能做的事，以下是PM2常用的命令，算是帮助回忆。
 
 | 命令 | 作用 |
@@ -104,11 +104,13 @@ Daemon(后台驻留程序),正如它自己的名字一样，它是后台专门�
 Client(执行启动进程的进程)，如果我们是用控制台来启动，那么这个Client时候可以理解为当前执行命令的这个进程。一般这个Client执行完就被销毁了。
 
 举个小例子如果一台服务器，同时有四个用户登录上去，并在那台机器上分别执行自己的启动命令这时候就会有四个Client同时去和Daemon产生通信，通信如下图。
+
 ![](http://s0.meituan.net/bs/tempfs/file/chenjianhui/drawio.svg)
 
 当然Daemon进程也不是一直都存在的，只有当Client去pingDaemon的时候发现没有Daemon的时候，会Clustor方式产生一个Daemon进程。
 
 Client和Daemon刨除一些配置先关和方法相关和启动进程相关的核心模块我整理如下：
+
 ![](http://s0.meituan.net/bs/tempfs/file/chenjianhui/client_deamon.svg)
 
 - RPC连接了Client和Daemon
@@ -164,9 +166,11 @@ daemon_mod是做什么用的?
 以上是执行start命令Client脚本执行所做的一系列操作，我刻意将Daemon在start时的执行部分排除在外，一方面因为Daemon启动依然是一个比较复杂的过程，另一方面Client的流程已经足够复杂。
 
 为了更好的理解Daemon的执行流程，我们先来看一下Daemon的代码框架：
+
 ![](http://s0.meituan.net/bs/tempfs/file/chenjianhui/deamon.svg)
 
 上图可以看出Daemon引入了很多库来完成自己的功能，另外引入了核心脚本God。接下来看Daemon启动流程便能清楚这过程中Daemon都做了什么。
+
 ![](http://s0.meituan.net/bs/tempfs/file/chenjianhui/deamon-2.svg)
 
 Daemon启动工作中主要进行了以下几项工作：
@@ -291,6 +295,7 @@ child_process.fork() 方法是 child_process.spawn() 的一个特殊情况，专
 
 PM2 结束进程的秘密
 已经看完上面内容的同学应该很清楚PM2启动都做了些什么，那么接下来我们看一下PM2在执行pm2 kill时都做了什么。以下是PM2kill命令执行图:
+
 ![](http://s0.meituan.net/bs/tempfs/file/chenjianhui/pm2kill.svg)
 
 正如上图所示，在关闭操作时Client和连接一样，自身只把RPC相关的端口关闭，然后给Daemon发送一个通知让Daemon将自己对应的进程杀掉。
