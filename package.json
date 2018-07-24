@@ -1,0 +1,19 @@
+{
+  "name": "nodeprocess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mainProcess.js",
+  "scripts": {
+    "start": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axon": "2.0.3",
+    "os": "^0.1.1",
+    "pm2": "^2.10.3",
+    "threads_a_gogo": "^0.1.13",
+    "v8-profiler": "^5.7.0"
+  }
+}

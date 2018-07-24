@@ -1,0 +1,17 @@
+{
+  "apps": [{
+    "name": "app",
+    "script": "./app.js",
+    "node_args": "--harmony",
+    "autorestart": true,
+    "watch": false,
+    "ignore_watch" : ["public"],
+    "exec_interpreter": "node",
+    "instances" : 3,
+    "exec_mode": "cluster",
+    "log_date_format": "YYYY - MM - DD HH: mm Z",
+    "env": {
+      "NODE_ENV": "dev"
+    }
+  }]
+}

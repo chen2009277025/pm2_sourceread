@@ -1,0 +1,11 @@
+{
+  "name": "pm2-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "daemon": "./startDaemon",
+    "app": "./pm2 start app.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

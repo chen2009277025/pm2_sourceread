@@ -1,0 +1,7 @@
+node_modules
+node_modules/*
+.idea
+.cache
+npm-debug.log
+.DS_Store
+.DS_Store/*

@@ -1,0 +1,1 @@
+DEBUG=pm2-read node ../pm2/lib/Daemon.js
